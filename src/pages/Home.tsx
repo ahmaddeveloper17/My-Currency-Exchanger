@@ -16,7 +16,7 @@ export default function Home() {
     <div>
       <div className="bg-blue-100 h-[470px] mt-20 ">
         <h1 className="text-center font-roboto text-gray-900 text-6xl font-bold leading-100 pt-[42px] ">
-          Currency Converter gg
+          Currency Converter
         </h1>
         <p className="text-center mt-[25px] font-roboto text-base input:mx-[10px] font-normal leading-7 text-gray-700">
           Need to make an international business payment? Take a look at our

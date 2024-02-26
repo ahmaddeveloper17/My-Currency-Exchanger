@@ -10,15 +10,19 @@ interface CurrencyState {
 }
 export const fetchData = createAsyncThunk("currencyData", async () => {
   try {
-    const response1 = await axios.get(
-      `https://route-handler-bootcamp.vercel.app/api/http:/api.exchangeratesapi.io/v1/symbols?access_key=4c9fea4e264cd6f8266a884feb4b839b`
-    );
-    const response2 = await axios.get(
-      `https://route-handler-bootcamp.vercel.app/api/http:/api.exchangeratesapi.io/v1/latest?access_key=4c9fea4e264cd6f8266a884feb4b839b`
-    );
+    const axiosInstance = axios.create({
+      baseURL:
+        "https://route-handler-bootcamp.vercel.app/api/http:/api.exchangeratesapi.io/v1/",
+      timeout: 5000,
+    });
+    const [symbolsResponse, ratesResponse] = await Promise.all([
+      axiosInstance.get("symbols?access_key=4c9fea4e264cd6f8266a884feb4b839b"),
+      axiosInstance.get("latest?access_key=4c9fea4e264cd6f8266a884feb4b839b"),
+    ]);
+
     return {
-      rates: response2.data.rates,
-      symbols: response1.data.symbols,
+      symbols: symbolsResponse.data.symbols,
+      rates: ratesResponse.data.rates,
     } as {
       rates: Record<string, number>;
       symbols: Record<string, string>;

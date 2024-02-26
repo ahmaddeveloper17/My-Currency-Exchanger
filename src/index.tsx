@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import IndividualCurrency from "./pages/IndividualCurrency";
-import store from "./app/store";
+import store from "./store/store";
 import Final from "./pages/Final";
 const router = createBrowserRouter([
   { path: "/", element: <App /> },

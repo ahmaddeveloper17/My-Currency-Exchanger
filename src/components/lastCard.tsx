@@ -1,14 +1,14 @@
 import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSymbols } from "../features/currencySlice";
+import { selectSymbols } from "../store/features/currencySlice";
 
 import {
   selectCurrency,
   fetchData,
   setBaseCurrency,
   setTargetCurrency,
-} from "../features/currencySlice";
+} from "../store/features/currencySlice";
 import { Cross } from "../assets/SVGs/Icons";
 
 interface CurrencyOption {
@@ -45,7 +45,6 @@ function LastCard() {
   const [popupVisible, setPopupVisible] = useState(false);
 
   useEffect(() => {
-    console.log("Fetching exchange rates");
     dispatch(fetchData() as any);
     if (CUR1) {
       dispatch(setBaseCurrency(CUR1));

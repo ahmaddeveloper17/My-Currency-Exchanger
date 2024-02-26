@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSymbols } from "../features/currencySlice";
+import { selectSymbols } from "../store/features/currencySlice";
 
 import {
   selectCurrency,
   fetchData,
   setBaseCurrency,
   setTargetCurrency,
-} from "../features/currencySlice";
+} from "../store/features/currencySlice";
 import { Cross } from "../assets/SVGs/Icons";
 
 interface CurrencyOption {
@@ -40,7 +40,6 @@ function MainCard() {
   const [popupVisible, setPopupVisible] = useState(false);
 
   useEffect(() => {
-    console.log("Fetching exchange rates");
     dispatch(fetchData() as any);
   }, [dispatch]);
 
@@ -210,8 +209,8 @@ function MainCard() {
       <div className="flex flex-col ml-[40px] sm:flex-row mt-14 mr-[3px]] justify-between">
         <p className="w-[600px] h-8 mt-2 rounded-full   font-roboto text-base font-bold leading-10 cursor-pointer flex ">
           {"1.00"} {baseCurrency} ={" "}
-          {rates && baseCurrency && targetCurrency
-            ? (1 / rates[baseCurrency]).toFixed(2)
+          {rates && targetCurrency
+            ? (1 / rates[targetCurrency]).toFixed(2)
             : ""}{" "}
           {targetCurrency}
           <div

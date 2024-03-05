@@ -58,6 +58,23 @@ function MainCard() {
   const handleAmountChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAmount(Number(event.target.value));
   };
+
+  const handleConversion = () => {
+    if (rates && targetCurrency && baseCurrency !== null && amount !== null) {
+      const baseRate = rates[baseCurrency];
+      const targetRate = rates[targetCurrency];
+      if (baseRate !== undefined && targetRate !== undefined) {
+        const sourceRate = parseFloat(String(baseRate));
+        const targetRateValue = parseFloat(String(targetRate));
+        if (!isNaN(sourceRate) && !isNaN(targetRateValue)) {
+          const exchangeRateAmount = amount / sourceRate;
+          const converted = exchangeRateAmount * targetRateValue;
+          setConvertedAmount(converted);
+        }
+      }
+    }
+  };
+
   const convertCurrency = () => {
     if (!amount || !rates || !targetCurrency || !baseCurrency) {
       return;

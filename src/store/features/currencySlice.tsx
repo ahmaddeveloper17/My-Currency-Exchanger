@@ -5,8 +5,8 @@ interface CurrencyState {
   symbols: Record<string, string>;
   loading: "idle" | "pending" | "succeeded" | "failed";
   error: string | null;
-  baseCurrency?: string;
-  targetCurrency?: string;
+  baseCurrency: string;
+  targetCurrency: string;
 }
 export const fetchData = createAsyncThunk("currencyData", async () => {
   try {

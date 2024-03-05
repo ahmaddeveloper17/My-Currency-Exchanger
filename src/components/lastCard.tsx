@@ -45,7 +45,7 @@ function LastCard() {
   const [popupVisible, setPopupVisible] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchData() as any);
+    dispatch<any>(fetchData());
     if (CUR1) {
       dispatch(setBaseCurrency(CUR1));
     }
@@ -71,15 +71,19 @@ function LastCard() {
   };
 
   const handleConversion = () => {
-    if (!rates || !targetCurrency || !baseCurrency || amount === null) {
-      return;
+    if (rates && targetCurrency && baseCurrency !== null && amount !== null) {
+      const baseRate = rates[baseCurrency];
+      const targetRate = rates[targetCurrency];
+      if (baseRate !== undefined && targetRate !== undefined) {
+        const sourceRate = parseFloat(String(baseRate));
+        const targetRateValue = parseFloat(String(targetRate));
+        if (!isNaN(sourceRate) && !isNaN(targetRateValue)) {
+          const exchangeRateAmount = amount / sourceRate;
+          const converted = exchangeRateAmount * targetRateValue;
+          setConvertedAmount(converted);
+        }
+      }
     }
-
-    const targetRate = parseFloat(rates[targetCurrency] as any);
-    const sourceRate = parseFloat(rates[baseCurrency] as any);
-    const exchangeRateAmount = amount / sourceRate;
-    const converted = exchangeRateAmount * targetRate;
-    setConvertedAmount(converted);
   };
   const convertCurrency = () => {
     if (!amount || !rates || !targetCurrency) {
@@ -219,11 +223,13 @@ function LastCard() {
       </div>
       <div className="flex flex-col ml-[40px] sm:flex-row mt-14 mr-[3px]] justify-between">
         <p className="w-[600px] h-8 mt-2 rounded-full   font-roboto text-base font-bold leading-10 cursor-pointer flex ">
-          {"1.00"} {baseCurrency} ={" "}
-          {rates && baseCurrency && targetCurrency
-            ? (1 / rates[baseCurrency]).toFixed(2)
-            : ""}{" "}
-          {targetCurrency}
+          {`1.00 ${baseCurrency} =
+          ${
+            rates?.[baseCurrency]
+              ? (rates[targetCurrency] / rates[baseCurrency]).toFixed(2)
+              : { baseCurrency }
+          }
+           ${targetCurrency}`}
           <div
             onMouseOut={() => setPopupVisible(false)}
             onClickCapture={() => setPopupVisible(false)}

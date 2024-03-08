@@ -13,7 +13,7 @@ export default function Home() {
     }
   };
   return (
-    <div>
+    <div className="  overflow-x: hidden;    ">
       <div className="bg-blue-100 h-[470px] mt-20 ">
         <h1 className="text-center font-roboto text-gray-900 text-6xl font-bold leading-100 pt-[42px] ">
           Currency Converter

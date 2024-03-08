@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import backgroundImage from "../assets/background.jpg";
-import MainCard from "../components/MainCard";
+import backgroundImage from "../../assets/background.jpg";
+import MainCard from "../../components/mainCard/MainCard";
 export default function Home() {
   const [selectedCurrency, setSelectedCurrency] = useState("");
   const navigate = useNavigate();

@@ -1,20 +1,16 @@
 import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSymbols } from "../store/features/currencySlice";
+import { selectSymbols } from "../../store/features/currencySlice";
 
 import {
   selectCurrency,
   fetchData,
   setBaseCurrency,
   setTargetCurrency,
-} from "../store/features/currencySlice";
-import { Cross } from "../assets/SVGs/Icons";
-
-interface CurrencyOption {
-  value: string;
-  label: string;
-}
+} from "../../store/features/currencySlice";
+import { Cross } from "../../assets/SVGs/Icons";
+import { CurrencyOption } from "../../types/types";
 
 function calculateConvertedAmount(
   amount: number,
@@ -30,7 +26,7 @@ function calculateConvertedAmount(
   return targetAmount;
 }
 
-function LastCard() {
+const LastCard = () => {
   const symbols = useSelector(selectSymbols);
   const location = useLocation();
 
@@ -269,6 +265,6 @@ function LastCard() {
       </div>
     </div>
   );
-}
+};
 
 export default LastCard;

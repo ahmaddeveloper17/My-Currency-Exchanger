@@ -1,14 +1,17 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import arrow from "../assets/images-removebg-preview.png";
-interface CardProps {
-  description: string;
-}
+import arrow from "../../assets/images-removebg-preview.png";
+import { CardProps } from "../../types/types";
+
 const Card: React.FC<CardProps> = (props) => {
   const location = useLocation();
+
   const currency = new URLSearchParams(location.search).get("currency");
+
   const { description } = props;
+
   const shouldNotShowResult = currency === description;
+
   return (
     <div className="text-black">
       {!shouldNotShowResult && (

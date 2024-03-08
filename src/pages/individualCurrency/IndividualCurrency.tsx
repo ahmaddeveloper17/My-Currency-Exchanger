@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import { useLocation } from "react-router-dom";
-import arrow from "../assets/Vector.png";
-import Card from "../components/card";
+import arrow from "../../assets/Vector.png";
+import Card from "../../components/card/card";
 export default function IndividualCurrency() {
   const location = useLocation();
   const currency = new URLSearchParams(location.search).get("currency");

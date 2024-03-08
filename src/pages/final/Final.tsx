@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import LastCard from "../components/lastCard";
+import LastCard from "../../components/lastCard/lastCard";
 export default function Final() {
   const location = useLocation();
   const CUR1 = new URLSearchParams(location.search).get("CUR1");

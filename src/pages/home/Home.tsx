@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import backgroundImage from "../../assets/background.jpg";
+import background from "../../assets/background.jpg";
 import MainCard from "../../components/mainCard/MainCard";
 export default function Home() {
   const [selectedCurrency, setSelectedCurrency] = useState("");
@@ -42,7 +42,7 @@ export default function Home() {
       </div>
       <div
         className=" w-[2000  px] h-[260px]   "
-        style={{ backgroundImage: `url(${backgroundImage})` }}
+        style={{ background: `url(${background})` }}
       >
         <div className="bg-blue-100 bg-blue-300/20 h-[260px]">
           <h1 className="text-center text-gray-900 pt-[20px] font-roboto text-4xl font-bold leading-10">

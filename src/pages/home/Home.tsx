@@ -44,7 +44,7 @@ export default function Home() {
         className=" w-[2000  px] h-[260px]   "
         style={{ background: `url(${background})` }}
       >
-        <div className="bg-blue-100 bg-blue-300/15 h-[260px]">
+        <div className="bg-blue-500 bg-blue-300/10 h-[260px]">
           <h1 className="text-center text-gray-900 pt-[20px] font-roboto text-4xl font-bold leading-10">
             Popular currencies
           </h1>

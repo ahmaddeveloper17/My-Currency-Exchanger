@@ -1,17 +1,25 @@
 import { Link } from "react-router-dom";
 import React from "react";
 import { useLocation } from "react-router-dom";
-import arrow from "../../assets/Vector.png";
+import arrow from "../../assets/map.png";
 import Card from "../../components/card/card";
 export default function IndividualCurrency() {
+  const countryNames: { [key: string]: string } = {
+    USD: "United States Dollar",
+    EUR: "Euro",
+    PKR: "Pakistani Rupee",
+    NZD: "New Zealand Dollar",
+    CAD: "Canadian Dollar",
+    JPY: "Japanese Yen",
+  };
   const location = useLocation();
   const currency = new URLSearchParams(location.search).get("currency");
   return (
     <div className="overflow-x-hidden mb-[80px]">
-      <div className="flex flex-col sm:flex-row mt-14 justify-center bg-blue-100">
-        <div className="ml-[20px]">
+      <div className="flex flex-col sm:flex-row mt-14 justify-center bg-blue-50">
+        <div className="ml-[10px]">
           <h1 className="text-center mt-20 mb-4 font-roboto text-6xl font-bold leading-16 text-gray-900">
-            {currency}
+            {currency ? countryNames[currency] : "Currency Not Found"}
           </h1>
           <p>
             USD (United States Dollar): As the world's primary reserve currency,
@@ -27,11 +35,11 @@ export default function IndividualCurrency() {
             oil. JPY (Japanese Yen): <br /> As the official currency of Japan,
             the JPY is known for its stability.
           </p>
-          <button className="rounded-sm mt-6 bg-red-500 border-2 border-red-500 hover:bg-white hover:text-red-500 h-14 mb-20 text-white p-4">
+          <button className="rounded mt-6 bg-[#E5133A] border-2 border-[#E5133A] hover:bg-white hover:text-[#E5133A] h-14 mb-20 text-white p-4">
             Compare rates
           </button>
         </div>
-        <div className="mt-20 ml-[30px]">
+        <div className="mt-20 ml-[40px]">
           <img src={arrow} alt="arrow" width={500} />
         </div>
       </div>

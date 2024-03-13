@@ -86,25 +86,26 @@ function MainCard() {
   };
 
   return (
-    <div className="rounded-md relative bg-white sm:w-3/4 w-[374px] shadow-2xl p-4 mx-auto">
-      <h1 className="text-center text-[20px] font-roboto text-3xl font-bold leading-7 text-gray-800 mt-6 mb-8">
+    <div className="rounded-md relative bg-white md:w-[700px]  lg:w-[900px] shadow-2xl ">
+      <h1 className=" text-white mb-[-15px]"> g</h1>
+      <h1 className="text-center text-[20px] sm:text-[32px] font-roboto text-3xl font-bold leading-7 text-gray-800 mt-6 mb-[30px]">
         Make fast and affordable <br /> international business payments
       </h1>
-      <p className="text-gray-800 font-roboto text-base text-center leading-6">
+      <p className="text-gray-900 font-roboto text-[16px] text-base text-center leading-6">
         Send secure international business payments in <b>XX</b> currencies, all
         at competitive rates with no hidden fees.
       </p>
-      <div className="flex flex-col sm:flex-row lg:ml-[40px] input:ml-[-1px] mt-14">
-        <div className="rounded-sm border-2 border-t-[-18px] w-full sm:w-2/3 border-gray-900 h-[80px] bg-white p-4 mb-4 sm:mb-0">
+      <div className="flex flex-col sm:flex-row lg:ml-[40px] input:ml-[-1px] mt-[33px]">
+        <div className="rounded-sm border-2 border-t-[-18px] input:w-[320px] input:mx-auto w-full sm:w-2/3 border-[#C6C6C6] h-[64px] bg-white sm:ml-[40px] md:ml-[40px] lg:ml-[0px] p-4 mb-4 sm:mb-0">
           <div className="flex">
-            <div className="w-3/4 pr-2">
+            <div className="w-3/4 mt-[-10px] pr-2">
               <p>Amount</p>
               <input
                 type="number"
-                placeholder="0.00"
+                placeholder="0"
                 value={amount || ""}
                 onChange={handleAmountChange}
-                className="border-none w-full h-17 focus:outline-none"
+                className="ring-0 focus:outline-none w-full font-bold  placeholder:text-[#1A1A1A] font-roboto text-[20px] text-[black]"
               />
             </div>
             {loading === "succeeded" && (
@@ -113,7 +114,7 @@ function MainCard() {
                   id="baseCurrency"
                   name="baseCurrency"
                   value={baseCurrency || ""}
-                  className="currency-select border-r-white border-b-2 mt-[-16px] border-l-2 h-[78px] border-black h-17 w-full"
+                  className="currency-select border-r-white font-bold text-[20px] text-[black] border-b-2 mt-[-16px] border-l-2 h-[62px] border-[#C6C6C6] h-17 input:w-[70px] sm:w-[60px] md:w-[70px] xl:w-[102px]"
                   onChange={handleBaseCurrencyChange}
                   style={{ fontFamily: "YourChosenFont, sans-serif" }}
                 >
@@ -121,11 +122,13 @@ function MainCard() {
                     <option key={option.value} value={option.value}>
                       <table>
                         <tr>
-                          <td style={{ fontFamily: "Helvetica" }}>
+                          <td
+                            className="font-helvetica"
+                            style={{ fontFamily: "Helvetica" }}
+                          >
                             {option.value}
                           </td>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           <td style={{ fontFamily: "Helvetica" }}>
                             {option.label}
                           </td>
@@ -146,18 +149,18 @@ function MainCard() {
         >
           <Cross />
         </button>
-        <div className="rounded-sm border-2 h-[80px] w-full mr-[40px] sm:w-2/3 border-gray-700 bg-white p-4">
+        <div className="rounded-sm border-2 h-[64px] w-full mr-[40px] input:w-[320px] input:mx-auto sm:w-2/3 sm:mr-[40px] border-[#C6C6C6] bg-white p-4">
           <div className="flex">
-            <div className="w-3/4 pr-2">
+            <div className="w-3/4 mt-[-10px] pr-2">
               <p>Converted to</p>
               <input
                 type="number"
-                placeholder="0.00"
+                placeholder="0"
                 value={
                   convertedAmount !== null ? convertedAmount.toFixed(2) : ""
                 }
                 readOnly
-                className="border-none w-full h-17 focus:outline-none"
+                className="ring-0 focus:outline-none h-[24px] w-full font-bold  placeholder:text-[#1A1A1A] font-roboto text-[20px] text-[black]"
               />
             </div>
             {loading === "succeeded" && (
@@ -166,7 +169,7 @@ function MainCard() {
                   id="targetCurrency"
                   name="targetCurrency"
                   value={targetCurrency || ""}
-                  className="currency-select border-r-white  border-b-2 mt-[-16px] border-l-2 h-[78px] border-black h-17 w-full"
+                  className="currency-select border-r-white font-bold text-[20px] text-[black] border-b-2 mt-[-16px] border-l-2 h-[62px] border-[#C6C6C6] h-17 input:w-[70px] sm:w-[60px] md:w-[70px] xl:w-[102px]"
                   onChange={handleTargetCurrencyChange}
                   style={{ fontFamily: "YourChosenFont, sans-serif" }}
                 >
@@ -177,8 +180,7 @@ function MainCard() {
                           <td style={{ fontFamily: "sans-serif" }}>
                             {option.value}
                           </td>
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           <td style={{ fontFamily: "sans-serif" }}>
                             {option.label}
                           </td>
@@ -195,12 +197,12 @@ function MainCard() {
           {loading === "failed" && <p>Error: {error}</p>}
         </div>
       </div>
-      <div className="flex flex-col ml-[40px] sm:flex-row mt-14 mr-[3px]] justify-between">
+      <div className="flex flex-col ml-[40px] sm:flex-row mt-[30px] mr-[3px]] justify-between">
         <p className="w-[600px] h-8 mt-2 rounded-full font-roboto text-base font-bold leading-10 cursor-pointer flex ">
           {`1.00 ${baseCurrency} =
           ${
             rates?.[baseCurrency]
-              ? (rates[targetCurrency] / rates[baseCurrency]).toFixed(2)
+              ? (rates[targetCurrency] / rates[baseCurrency]).toFixed(4)
               : { baseCurrency }
           }
            ${targetCurrency}`}
@@ -236,7 +238,7 @@ function MainCard() {
         )}
         <button
           onClick={convertCurrency}
-          className="lg:px-[110px] md:px-[60px] sm:px-[30px] xl:px-[155px] 2xl:px-[205px] 3xl:px-[245px] 4xl:ml-[100px] 4xl:px-[275px] mr-[40px] h-10 mt-3 border-2 border-red-500 hover:bg-white hover:text-red-500 flex-shrink-0 rounded-sm bg-red-500 text-white font-roboto text-base leading-46 cursor-pointer"
+          className=" md:px-[110px] sm:px-[60px] lg:px-[150px] 2xl:px-[150px] 3xl:px-[150px] rounded 4xl:ml-[100px] 4xl:px-[150px] mb-[40px] mr-[40px] h-10 border-2 border-[#E5133A] hover:bg-white hover:text-red-500 flex-shrink-0  bg-[#E5133A] text-white font-roboto text-base leading-46 cursor-pointer"
         >
           Get started
         </button>
